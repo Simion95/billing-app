@@ -1,0 +1,25 @@
+/* https://coolors.co/palette/d8f3dc-b7e4c7-95d5b2-74c69d-52b788-40916c-2d6a4f-1b4332-081c15 */
+/* https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX */
+* {
+  font-family: "IBM Plex Mono", monospace;
+  margin: 0px;
+}
+
+:root {
+  --white: #FFFFFF;
+  --lightGreen: #B7E4C7;
+  --mediumGreen: #52B788;
+  --darkGreen: #1B4332;
+}
+
+body {
+  background-color: var(--lightGreen);
+}
+
+/* 
+  'sm': '640px',
+  'md': '768px',
+  'lg': '1024px',
+  'xl': '1280px',
+  '2xl': '1536px',
+*/
