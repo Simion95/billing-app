@@ -124,6 +124,7 @@
 
 .under-section {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     max-width: 900px;
@@ -143,6 +144,9 @@
     .billing-result-container {
         width: calc(50% - 48px);
         margin-top: 0px;
+    }
+    .under-section {
+        flex-direction: row;
     }
 }
 

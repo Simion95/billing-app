@@ -34,6 +34,8 @@ const BillingSection = () => {
 
            e.target.reset();
           setSelectedOption(-1);
+          setTipAmount(0);
+          setTotalAmount(0);
     };
 
     const handleClick = (optionIndex) => {
