@@ -41,35 +41,6 @@ const BillingSection = () => {
         setSelectedOption(optionIndex);
     };
 
-    const getAverageBillAmount = () => {
-        let average = 0;
-
-        for( let i = 0; i < history.length; i++) {
-            average += history[i].bill;
-        }
-
-        return (average / history.length).toFixed(2);
-    }
-    const getAverageTipsAmount = () => {
-        let average = 0;
-
-        for( let i = 0; i < history.length; i++) {
-            average += history[i].tipTotal;
-        }
-
-        return (average / history.length).toFixed(2);
-    }
-    const getAveragePersonsAmount = () => {
-        let average = 0;
-
-        for( let i = 0; i < history.length; i++) {
-            average += history[i].numberOfPeople;
-        }
-
-        return (average / history.length).toFixed(2);
-    }
-
-
     const calculateAverage = (history, property) => {
         let sum = 0;
     
@@ -80,7 +51,6 @@ const BillingSection = () => {
         return parseFloat(sum / history.length);
     }
     
-    // Exemplu de utilizare:
     const averageBillAmount = calculateAverage(history, 'bill').toFixed(2);
     const averageTipsAmount = calculateAverage(history, 'tipTotal').toFixed(2);
     const averagePersonsAmount = calculateAverage(history, 'numberOfPeople').toFixed(0);
