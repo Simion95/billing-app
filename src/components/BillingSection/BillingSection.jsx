@@ -1,7 +1,6 @@
 import { useState } from "react";
 import './BillingSection.css';
 import userIcon from '../../assets/icons/user.svg';
-//fix partea dreapta nu se reseteaza
 const tipOptions = [5, 10, 15, 25, 50];
 
 const BillingSection = () => {
