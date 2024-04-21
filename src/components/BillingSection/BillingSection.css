@@ -127,10 +127,32 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    max-width: 900px;
+    max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    gap: 16px;
 }
+
+.av-amount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+}
+
+.historyList {
+    border: 1px solid var(--darkGreen);
+    border-radius: 5px;
+    padding: 12px;
+    list-style-type: none;
+}
+
+.historyList li {
+    font-size: 12px;
+}
+
+
 
 @media screen and (min-width: 768px) {
     .billing-container {
@@ -145,13 +167,14 @@
         width: calc(50% - 48px);
         margin-top: 0px;
     }
-    .under-section {
+    .av-amount {
         flex-direction: row;
-    }
+    }  
 }
 
 @media screen and (min-width: 1024px) {
     .tip-options {
         grid-template-columns: 1fr 1fr 1fr;
     }
+
 }

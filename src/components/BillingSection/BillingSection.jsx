@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './BillingSection.css';
 import userIcon from '../../assets/icons/user.svg';
-
+//fix partea dreapta nu se reseteaza
 const tipOptions = [5, 10, 15, 25, 50];
 
 const BillingSection = () => {
@@ -25,10 +25,9 @@ const BillingSection = () => {
 
         const orderTotal = bill + tipTotal;
         const orderTotalPerPerson = orderTotal / numberOfPeople;
-        const newHistory = [...history, { bill, tip: tipOptions[selectedOption], numberOfPeople }];
+        const newHistory = [...history, { bill, tipTotal, numberOfPeople }];
         setHistory(newHistory);
         console.log(newHistory);
-        
         setTipAmount(tipTotalPerPerson);
         setTotalAmount(orderTotalPerPerson);
 
@@ -51,6 +50,41 @@ const BillingSection = () => {
 
         return (average / history.length).toFixed(2);
     }
+    const getAverageTipsAmount = () => {
+        let average = 0;
+
+        for( let i = 0; i < history.length; i++) {
+            average += history[i].tipTotal;
+        }
+
+        return (average / history.length).toFixed(2);
+    }
+    const getAveragePersonsAmount = () => {
+        let average = 0;
+
+        for( let i = 0; i < history.length; i++) {
+            average += history[i].numberOfPeople;
+        }
+
+        return (average / history.length).toFixed(2);
+    }
+
+
+    const calculateAverage = (history, property) => {
+        let sum = 0;
+    
+        for (let i = 0; i < history.length; i++) {
+            sum += history[i][property];
+        }
+    
+        return parseFloat(sum / history.length);
+    }
+    
+    // Exemplu de utilizare:
+    const averageBillAmount = calculateAverage(history, 'bill').toFixed(2);
+    const averageTipsAmount = calculateAverage(history, 'tipTotal').toFixed(2);
+    const averagePersonsAmount = calculateAverage(history, 'numberOfPeople').toFixed(0);
+    
 
     return (
         <section>
@@ -95,18 +129,28 @@ const BillingSection = () => {
                 </div>
             </div>
 
-          <div className="under-section">  <ul>
+          <div className="under-section">
+          {history.length > 0 && (
+        <div>
+            
+            <div className="under-section av-amount historyList">
+            <h6 className="historyList">Av. Bills: ${averageBillAmount}</h6>
+            <h6 className="historyList">Av. Tips: ${averageTipsAmount}</h6>
+            <h6 className="historyList">Av. Persons: {averagePersonsAmount}</h6>
+            </div>
+        </div>
+    )} 
+
+    {history.length > 0 && (
+
+     <ul className="historyList">
   {history.map((order,index) => (
-    <li key={index}> Bill: ${order.bill} / Tip: {order.tip}% / People: {order.numberOfPeople} </li>
+    <li key={index}> Bill: ${order.bill} | Tip: ${order.tipTotal} | People: {order.numberOfPeople} </li>
   ))}
 </ul>
-
-
-{history.length > 0 && (
-        <div>
-            <h3> Average bills: ${getAverageBillAmount()}</h3>
-        </div>
     )}
+
+
             </div>
         </section>
     )
